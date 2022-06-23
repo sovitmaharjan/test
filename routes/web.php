@@ -30,6 +30,8 @@ Route::get('/route-detail/{id}', function (Request $request) {
 })->name('route-detail');
 
 Route::get('/route-detail-edit/{route_id}/{sub_location_id}', function (Request $request) {
+    //editing pivot table without detaching other pivot values
+    
     // dd($request->sub_location_id);
     $route_detail = ModelsRoute::find($request->route_id);
     $status = $route_detail->subLocation->where('id', $request->sub_location_id)->first()->pivot->status == 'disable' ? 'enable' : 'disable';
