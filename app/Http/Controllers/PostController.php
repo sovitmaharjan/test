@@ -47,7 +47,7 @@ class PostController extends Controller
         DB::beginTransaction();
         $post = Post::create($data);
         
-        $request->image->storeAs($path, $fileName, 'private');
+        $request->image->storeAs($path, $fileName, 'public');
         DB::commit();
 
         $post = Post::orderBy('id', 'DESC')->get();
