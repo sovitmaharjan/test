@@ -17,7 +17,7 @@ class PostController extends Controller
         //     Storage::disk('public')->getVisibility('uploads/2022/Jun/3625488651655288745.png')
         // );
         $post = Post::orderBy('id', 'DESC')->get();
-        dd(Storage::disk('private')->exists($post[0]->image) ? Storage::disk('private')->get($post[0]->image) : 'no');
+        // dd(Storage::disk('private')->exists($post[0]->image) ? Storage::disk('private')->get($post[0]->image) : 'no');
         return view('post', compact('post'));
     }
 
