@@ -11,14 +11,16 @@ class NotificationTest extends Notification
 {
     use Queueable;
 
+    protected $notification_data;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($notification_data)
     {
-        //
+        $this->notification_data = $notification_data;
     }
 
     /**
@@ -41,8 +43,8 @@ class NotificationTest extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line($this->data['body'])
-            ->action($this->data['action'], $this->data['url'])
+            ->line($this->notification_data['body'])
+            ->action($this->notification_data['action'], $this->notification_data['url'])
             ->line('Thank you for using our application!');
     }
 

@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('send-notification', [NotificationTestController::class, 'sendnotification']);
+Route::get('send-notification', [NotificationTestController::class, 'sendNotification']);
