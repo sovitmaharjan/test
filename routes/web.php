@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Models\Post;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,18 +21,22 @@ Route::get('/', function () {
 });
 
 // Route::get('/', function () {
-//     $a = DB::table('posts')
-//         ->whereBetween('created_at', ['2022-06-25', '2022-06-29'])
-//         ->count();
+    // $a = DB::table('posts')
+    //     ->whereBetween('created_at', ['2022-06-25', '2022-06-29'])
+    //     ->count();
 
-//     $a = DB::select('select (select count(id) from posts where date(created_at) <= "2022-06-27" and date(created_at) >= "2022-06-25") as ongoing_event, (select count(id) from posts where date(created_at) <= "2022-06-27" and date(created_at) >= "2022-06-25") as total_event');
+    // $a = DB::select('select (select count(id) from posts where date(created_at) <= "2022-06-27" and date(created_at) >= "2022-06-25") as ongoing_event, (select count(id) from posts where date(created_at) <= "2022-06-27" and date(created_at) >= "2022-06-25") as total_event');
 
-//     $b = DB::table('posts')
-//         ->select(DB::raw('count(id) as ongoing_event'))
-//         ->where('created_at', '<=', "2022-06-27")
-//         ->where('created_at', '>=', "2022-06-25")
-//         ->get();
-//     dd(collect($a), $b);
+    // $b = DB::table('posts')
+    //     ->select(DB::raw('count(id) as ongoing_event'))
+    //     ->where('created_at', '<=', "2022-06-27")
+    //     ->where('created_at', '>=', "2022-06-25")
+    //     ->get();
+
+//     $a = Post::select(DB::raw("COUNT(id) as count1"),
+//         DB::raw("COUNT(CASE WHEN date(created_at) <= NOW() and date(created_at) >= NOW() THEN 1 END) as count2"))->get();
+    
+//     dd($a);
 // });
 
 Route::resource('/post', PostController::class);
