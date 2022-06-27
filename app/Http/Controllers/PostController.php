@@ -38,17 +38,19 @@ class PostController extends Controller
             'description' => $request->description,
         ];
 
-        $fileName = rand() . time() . '.' . $request->image->extension();
-        $path = "uploads/" . Carbon::now()->format('Y') . "/" . Carbon::now()->format('M') . '/';
-        $filePath = $path . $fileName;
+        // $fileName = rand() . time() . '.' . $request->image->extension();
+        // $path = "uploads/" . Carbon::now()->format('Y') . "/" . Carbon::now()->format('M') . '/';
+        // $filePath = $path . $fileName;
 
-        $data['image'] = $filePath;
+        // $data['image'] = $filePath;
         
         DB::beginTransaction();
         $post = Post::create($data);
         
-        $request->image->storeAs($path, $fileName, 'public');
+        // $request->image->storeAs($path, $fileName, 'public');
+        $post->addMedia($request->image)->toMediaCollection('media');
         DB::commit();
+
 
         $post = Post::orderBy('id', 'DESC')->get();
         return view('post', compact('post'));

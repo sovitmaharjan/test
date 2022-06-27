@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/', function () {
+Route::get('/', function () {
     // $a = DB::table('posts')
     //     ->whereBetween('created_at', ['2022-06-25', '2022-06-29'])
     //     ->count();
@@ -33,10 +33,10 @@ Route::get('/', function () {
     //     ->where('created_at', '>=', "2022-06-25")
     //     ->get();
 
-//     $a = Post::select(DB::raw("COUNT(id) as count1"),
-//         DB::raw("COUNT(CASE WHEN date(created_at) <= NOW() and date(created_at) >= NOW() THEN 1 END) as count2"))->get();
+    // $a = Post::select(DB::raw("COUNT(id) as total"),
+    //     DB::raw("COUNT(CASE WHEN date(created_at) >= '2022-06-26' and date(created_at) <= '2022-06-29' THEN 1 END) as specific"))->get();
     
-//     dd($a);
-// });
+    // dd($a);
+});
 
 Route::resource('/post', PostController::class);

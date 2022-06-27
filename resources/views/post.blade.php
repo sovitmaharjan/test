@@ -36,8 +36,9 @@
                 @foreach ($post as $value)
                     <tr>
                         <td>
-                            <a href="{{ url('storage/' . $value->image) }}">
-                                {{ url('storage/' . $value->image) }}
+                            pic: 
+                            <a href="{{ $value->getFirstMediaUrl() }}">
+                                {{ $value->getFirstMediaUrl() }}
                             </a>
                         </td>
                     </tr>
