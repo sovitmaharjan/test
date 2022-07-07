@@ -1,4 +1,4 @@
-<html>
+x<html>
 
 <head>
     <title>Post</title>
@@ -37,8 +37,8 @@
                     <tr>
                         <td>
                             pic: 
-                            <a href="{{ $value->getFirstMediaUrl() }}">
-                                {{ $value->getFirstMediaUrl() }}
+                            <a href="{{ $value->getFirstMediaUrl('media') }}">
+                                {{ $value->getFirstMediaUrl('media') }}
                             </a>
                         </td>
                     </tr>
