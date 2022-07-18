@@ -19,6 +19,10 @@ class Post extends Model implements HasMedia
         'description'
     ];
 
+    protected $casts = [
+        'description' => 'array'
+    ];
+
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()

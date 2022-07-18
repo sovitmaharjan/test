@@ -36,10 +36,13 @@ x<html>
                 @foreach ($post as $value)
                     <tr>
                         <td>
-                            pic: 
+                            <?php 
+                                print_r(json_decode($value->description))
+                            ?>
+                            {{-- pic: 
                             <a href="{{ $value->getFirstMediaUrl('media') }}">
                                 {{ $value->getFirstMediaUrl('media') }}
-                            </a>
+                            </a> --}}
                         </td>
                     </tr>
                 @endforeach

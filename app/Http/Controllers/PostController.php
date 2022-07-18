@@ -48,14 +48,14 @@ class PostController extends Controller
         $post = Post::create($data);
         
         // $request->image->storeAs($path, $fileName, 'public');
-        $post->addMedia($request->image)->toMediaCollection('media', 's3');
+        $post->addMedia($request->image)->toMediaCollection('media');
         DB::commit();
 
 
         $post = Post::orderBy('id', 'DESC')->get();
-        foreach($post as $post) {
-            dd($post->getMedia());
-        }
+        // foreach($post as $post) {
+        //     dd($post->getMedia());
+        // }
         return view('post', compact('post'));
         // return url('storage/' . $this->path);
     }
