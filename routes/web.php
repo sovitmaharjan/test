@@ -2,6 +2,7 @@
 
 use App\Events\FormSubmitted;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,3 +40,8 @@ Route::get('test', function () {
 });
 
 Route::get('/notify', [HomeController::class, 'notify']);
+
+Route::get('/nots', function() {
+    $user = DB::table('notifications')->orderBy('created_at', 'desc')->get();
+    return $user;
+});
