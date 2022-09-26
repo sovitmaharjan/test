@@ -1,6 +1,7 @@
 <?php
 
 use App\Events\FormSubmitted;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,3 +32,10 @@ Route::post('/sender', function() {
     event(new FormSubmitted($text));
     // return view('sender');
 });
+
+Route::get('test', function () {
+    event(new App\Events\MyEvent('notification test'));
+    return "Event has been sent!";
+});
+
+Route::get('/notify', [HomeController::class, 'notify']);
