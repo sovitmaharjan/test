@@ -1,18 +1,21 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use Vimeo\Laravel\Facades\Vimeo;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('vimeo', function (Request $request) {
+    $file = $request->file('video');
+    $fileName = time() . '_' . $file->getClientOriginalName();
+    $filePath = $file->move(public_path(''), $fileName);
+    $uri = Vimeo::upload($filePath, [
+        'name' => 'test title',
+        'description' => 'test description',
+    ]);
+    unlink($filePath);
+    dd($uri);
+})->name('vimeo');
