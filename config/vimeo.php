@@ -46,15 +46,15 @@ return [
     'connections' => [
 
         'main' => [
-            'client_id' => env('VIMEO_CLIENT', '836514c86c022e1a1e457e90d62d1547ea63ccc6'),
-            'client_secret' => env('VIMEO_SECRET', 'wkN7xCetCkpaRlhSJ+XEw2SWCW+Z8WCji+pvLARAXoZtn3MSyYZJysTZFd/yia3d/crQ96yFRywIg1hrqxkzmd2T2G1BvvG+T7wUN0lRxxsXki8jqUgiDGW9FAVjKz06'),
-            'access_token' => env('VIMEO_ACCESS', '1887043578f92b6583d020edd8d6db75'),
+            'client_id' => env('VIMEO_CLIENT'),
+            'client_secret' => env('VIMEO_SECRET'),
+            'access_token' => env('VIMEO_ACCESS'),
         ],
 
         'alternative' => [
-            'client_id' => env('VIMEO_ALT_CLIENT', 'your-alt-client-id'),
-            'client_secret' => env('VIMEO_ALT_SECRET', 'your-alt-client-secret'),
-            'access_token' => env('VIMEO_ALT_ACCESS', null),
+            'client_id' => env('VIMEO_ALT_CLIENT'),
+            'client_secret' => env('VIMEO_ALT_SECRET'),
+            'access_token' => env('VIMEO_ALT_ACCESS'),
         ],
 
     ],
