@@ -15,7 +15,8 @@ use App\Http\Controllers\TestController;
 */
 
 Route::get('/', function () {
+    return 'asdfasdf';
     return view('welcome');
 });
 
-Route::get('/', [TestController::class, 'index']);
+// Route::get('/', [TestController::class, 'index']);
