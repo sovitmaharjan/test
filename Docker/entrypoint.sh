@@ -1,10 +1,10 @@
 #!/bin/bash
 
-if [! -f "vendor/autoload.php"]; then
-    composer install -no-progress --no-interaction 
+if [ ! -f "vendor/autoload.php" ]; then
+    composer install 
 fi
 
-if [! -f ".env"]; then
+if [ ! -f ".env" ]; then
     echo "Creating env file for env $APP_ENV"
     cp .env.example .env
 else
@@ -17,5 +17,5 @@ php artisan cache:clear
 php artisan config:clear
 php artisan route:clear
 
-php artisan serve --port=$PORT --host=0.0.0.0 --env=.env
+php artisan serve --port=$PORT --env=.env
 exec docker-php-entrypoint  "$@"

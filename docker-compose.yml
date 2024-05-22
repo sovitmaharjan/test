@@ -23,10 +23,10 @@ services:
     database:
         image: mysql
         ports:
-            - 3306:3306
+            - 3307:3306
         environment:
             - MYSQL_DATABASE=${DB_DATABASE}
-            - MYSQL_USER=${DB_USERNAME}
+            - MYSQL_USER=laravel
             - MYSQL_PASSWORD=${DB_PASSWORD}
             - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
         volumes:
